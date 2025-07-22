@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-wrapper">
+{% if messages %}
+<!-- <ul class="alert-warning"> -->
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+    {% if message.tags %} {% endif %}{{ message }}
+</div>
+{% endfor %}
+<!-- </ul> -->
+{% endif %}
+<div class="col-lg-12 grid-margin stretch-card"><!-- style="width:800px; margin:0 auto;"-->
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Favourite Book List</h4>
+                  <div class="table-responsive">
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                      <thead class="bg-primary text-white">
+                      
+                        <tr>
+                        <th class="th-sm">Book ID
+                          </th>
+                        <th class="th-sm">Book Name
+                          </th>
+                        
+                          <th class="th-sm">Publisher Name
+                          </th>
+                          <th class="th-sm">Category Name
+                          </th>                          
+                          <th class="th-sm">Action
+                          </th>                                   
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                          <tr class="accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapse">                    
+                            <td>BK-1001</td>
+                            <td>book1</td>
+                            <td>pub1</td>
+                            <td>Categ 1</td>
+                            
+      
+                            
+                            {% comment %} <td>{{i.pre_hr}}</td>
+                            <td>{{i.userid}}</td>
+                            <td>{{i.}}</td>
+                            <td>{{i.pre_ps}}</td>  {% endcomment %}
+                            <td>
+                            <li class="list-inline-item">
+                                <a href="#" title="Click Here To Add in My Favourite book List"  class="btn btn-danger btn-elevate btn-sm ng-star-inserted">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true">
+                                </span><span><strong><i class="icon-heart"></i></strong></span></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="btn btn-warning btn-elevate btn-sm ng-star-inserted">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                <span><strong><i class="icon-check"></i></strong></span></a>
+                            </li>
+                                                       
+                        
+                              
+                            </td>
+                            {% comment %} <li class="list-inline-item">
+                                <a href="{% url 'updateStaffpage' i.id %}" class="btn btn-danger btn-elevate btn-sm ng-star-inserted"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span><strong><i class="icon-trash"></i>delete</strong></span></a>
+                            </li>
+                            </td>  {% endcomment %}
+                            
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>
+
+
+{% endblock content %}

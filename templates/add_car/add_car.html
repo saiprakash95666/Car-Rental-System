@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+<h4 class="card-title"><a class="btn btn-warning btn-sm btn-elevate text-white ng-star-inserted" 
+href="/SearchCars/"><i class="icon-arrow-left"></i>Back </a></h4>
+<h4 class="card-title mb-4" style="color: black; text-align:center;"> Add Cars</h4>
+                {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+            <div class="col-12 grid-margin">
+              <div class="card">              
+                <div class="card-body">             
+              
+                  <form class="form-sample" method='POST' action="/Add_CarSubmit/">
+                  {% csrf_token %}
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Car License ID :</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Enter Car License ID" name="cid" required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Car Name :</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Enter Car Name" name="cname" required>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Model Name :</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Enter Model Name" name="modname" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">                     
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">No of miles on car</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Enter Number of Miles on Car" name="nomiles" required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Type :</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="type">
+                              <option hidden selected value>--select an options--</option>                              
+                              <option>SUV</option>
+                              <option>Sedan</option>
+                              <option>Truck</option>
+                              <option>HatchBack</option>                                                         
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Status :</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="state" required>
+                              <option hidden selected value>--select an options--</option>                              
+                              <option>Available</option>
+                              <option>Not Available</option>                                                            
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                                                                                          
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                  </form>
+                </div>
+              </div>
+            </div>  
+{% endblock content %}

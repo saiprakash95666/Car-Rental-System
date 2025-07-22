@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+<h4 class="card-title mb-4"><a href="#" style="color: black;"><span></span></a>Add To Favourite Book List</h4>
+                {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" method='POST' action="#" >
+                  {% csrf_token %}
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Book ID :</label>
+                          <div class="col-sm-9">                           
+                            
+                               <input type="name" class="form-control" value="{{data.bookId}}" name="bookId" readonly>                            
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Book Name :</label>
+                          <div class="col-sm-9">
+                            <input type="name" class="form-control" value="{{data.issue_to}}"  readonly>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>  
+                    <div class="row">                     
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Publisher :</label>
+                          <div class="col-sm-9">
+                          <input type="name" class="form-control" value="{{data.issue_by}}" readonly>
+                            {% comment %} <select class="form-control" name="issueby" required>
+                              <option hidden selected value>--select an options--</option>                              
+                              <option>admin</option>                                                            
+                            </select> {% endcomment %}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Auther :</label>
+                          <div class="col-sm-9">
+                            <input type="name" class="form-control" value="{{data.return_day}}"  readonly>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Category :</label>
+                          <div class="col-sm-9">
+                          <input type="name" class="form-control" value="{{data.issue_date}}" name="category " readonly>                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                                                                                          
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button type="reset" class="btn btn-light">Reset</button>
+                  </form>
+                </div>
+              </div>
+            </div>  
+{% endblock content %}

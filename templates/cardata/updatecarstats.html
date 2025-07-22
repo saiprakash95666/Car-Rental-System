@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+<h4 class="card-title"><a class="btn btn-warning btn-sm btn-elevate text-white ng-star-inserted" 
+              href="/IssueCars_list/"><i class="icon-arrow-left"></i>Back </a></h4>
+<h4 class="card-title mb-4" style="color: black; text-align:center;"> Update Car Status</h4>
+                {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" method='POST' action="{% url 'Update_CarStatSubmit' data.id %}" >
+                  {% csrf_token %}
+                    <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label"> ID :</label>
+                          <div class="col-sm-9">                           
+                            
+                               <input type="text" class="form-control" value="{{data.id}}" name="Id" readonly>                            
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Car ID :</label>
+                          <div class="col-sm-9">                           
+                            
+                               <input type="name" class="form-control" value="{{data.carid}}" name="carid" readonly>                            
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>  
+                    <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Issue To :</label>
+                          <div class="col-sm-9">
+                            <input type="name" class="form-control" value="{{data.issue_to}}"  readonly>
+                          </div>
+                        </div>
+                      </div>                    
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Issue By :</label>
+                          <div class="col-sm-9">
+                          <input type="name" class="form-control" value="{{data.issue_by}}" readonly>
+                            {% comment %} <select class="form-control" name="issueby" required>
+                              <option hidden selected value>--select an options--</option>                              
+                              <option>admin</option>                                                            
+                            </select> {% endcomment %}
+                          </div>
+                        </div>
+                      </div>
+
+                      
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Issue Date :</label>
+                          <div class="col-sm-9">
+                          <input type="name" class="form-control" value="{{data.issue_date}}" readonly>                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Return Date :</label>
+                          <div class="col-sm-9">
+                            <input type="date" class="form-control" value="{{data.return_date}}"  name="rtdate">
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                  <div class="row">
+                  <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Status :</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="Ustatus">
+                              <option hidden selected value>{{data.stat}}</option>                              
+                              <option>Issued</option>
+                              <option>Returned </option>
+                                                            
+                            </select>
+                          </div>
+                        </div>
+                      </div> 
+                       
+                       
+                     
+                    </div> 
+                                                                                          
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                  </form>
+                </div>
+              </div>
+            </div>  
+{% endblock content %}

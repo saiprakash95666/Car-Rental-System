@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+<h4 class="card-title"><a class="btn btn-warning btn-sm btn-elevate text-white ng-star-inserted" 
+href="/staffList/"><i class="icon-arrow-left"></i>Back </a></h4>
+<h4 class="card-title mb-4" style="color: black; text-align:center;"> Update User Data</h4>
+                {% if messages %}
+                <!-- <ul class="alert-warning"> -->
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags %} {% endif %}{{ message }}
+                </div>
+                {% endfor %}
+                <!-- </ul> -->
+                {% endif %}
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <form class="row g-3" method='POST' action="{% url 'updateStaffsubmit' data.userid %}">
+                    {% csrf_token %}                    
+                    
+                    <div class=" col-md-6 ">
+                      <label for="username">UserId</label>
+                      <input type="name" class="form-control" value="{{data.userid}}" name="UserId" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="role" name="role" id="role">Role</label>
+                      <input type="text" class="form-control"  value="{{data.role}} "  readonly>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control"  value="{{data.passwd}} "  readonly>
+                    </div>  
+                    
+                    <div class="col-md-6 mt-2">
+                      <label for="status" name="status" id="status">Status</label>
+                      <select class="form-control"  name ="Ustatus" id="Ustatus">
+                          <option selected hidden >{{data.status}}</option>
+                          <option name ="Ustatus"  id="Ustatus">active</option>
+                          <option nam= "Ustatus" id="Ustatus">inactive</option> 
+                      </select>
+                    </div>
+
+                    
+                    
+                    <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div><br>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>  
+{% endblock content %}

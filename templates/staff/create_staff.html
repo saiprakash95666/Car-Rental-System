@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-wrapper">
+  <h4 class="card-title"><a class="btn btn-warning btn-sm btn-elevate text-white ng-star-inserted" href="/staffList/"><i
+        class="icon-arrow-left"></i>Back </a></h4>
+
+  {% if messages %}
+  <!-- <ul class="alert-warning"> -->
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}}">
+    {% if message.tags %} {% endif %}{{ message }}
+  </div>
+  {% endfor %}
+  <!-- </ul> -->
+  {% endif %}
+  <div class="col-10 grid-margin">
+    <div class="card">
+      <h4 class="card-title mb-2 mt-4" style="color: blue; text-align:center;"> Create New User</h4>
+      <div class="card-body">
+        <form method='POST' action="{% url 'createStaffSubmit' %}">
+          {% csrf_token %}
+          <div class="row">
+          <div class="form-group col-5 ml-5">
+            <h4>UserId</h4>
+            <input type="name" class="form-control" placeholder="userId" name="userId" required>
+          </div>
+          
+          <div class="form-group col-5 ml-5">
+            <h4>Email</h4>
+            <input type="email" class="form-control" placeholder="Email" name="email" required>
+          </div>
+          <div class="form-group col-5 ml-5">
+            <h4>Password</h4>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="pwd" required>
+
+          </div>
+
+          <div class="form-group col-5 ml-5">
+            <h4>Confirm Password</h4>
+            <input type="password" class="form-control" id="Confirm Password" placeholder="Confirm Password" name="cpwd"
+              required>
+
+          </div>
+
+          <div class="form-group col-5 ml-5">
+            <h4>Role</h4>
+            <select class="form-control" name="rolename">
+              <option hidden selected value>--select an options--</option>
+              <option>admin</option>
+              <option>student</option>
+              {% comment %} <option>Returned </option> {% endcomment %}
+
+            </select>
+
+          </div>
+
+
+
+          <div class="col-12 mt-5 ml-5">
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div><br>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
